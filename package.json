@@ -1,0 +1,20 @@
+{
+  "name": "uicon",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "uicon"
+  ],
+  "author": "",
+  "dependencies": {
+    "ejs": "~2.3.1",
+    "express": "~4.12.2",
+    "bootstrap": "^3.3.7",
+    "jquery": "^2.2.4",
+    "vue": "2.1.8"
+  }
+}

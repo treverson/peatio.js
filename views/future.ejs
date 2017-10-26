@@ -1,0 +1,165 @@
+<html>
+<head>
+	<title>合约交易</title>
+	<% include resource.ejs %>
+	<link rel='stylesheet' href='/css/future.css' />
+</head>
+<body>
+	<% include header.ejs %>
+	<div class="nav2 navbar navbar-inverse">
+		<div class="container">
+			<div class="logo">
+				<span>LOGO</span>
+			</div>
+			<div class="nav navbar-nav navbar-right nav-menu">
+				<div><a href="">首页</a></div>
+				<div><a href="">币币交易</a></div>
+				<div><a class="ac" href="/future">合约交易</a></div>
+				<div><a href="">行情图表</a></div>
+				<div><a href="">资金管理</a></div>
+				<div><a href="">个人中心</a></div>
+				<div><a href="">API</a></div>
+			</div>
+		</div>
+	</div>
+	<div class="main container">
+		<div class="left-menu">
+			<div>
+				<div class="list-title">
+					<span class="fa fa-area-chart"></span>
+					<span style="vertical-align:2px;">合约交易</span>
+				</div>
+				<ul class="list-group">
+					<li class="list-group-item ac">
+						<a href="">BTC合约</a>
+					</li>
+					<li class="list-group-item">
+						<a href="">LTC合约</a>
+					</li>
+				</ul>
+			</div>
+			<div class="info">
+				<div class="list-title">
+					<span class="fa fa-file-text-o"></span>
+					<span style="vertical-align:2px;">交易信息</span>
+				</div>
+				<ul class="list-group">
+					<li class="list-group-item">
+						<a href="">合约委托</a>
+					</li>
+					<li class="list-group-item">
+						<a href="">合约账单</a>
+					</li>
+					<li class="list-group-item">
+						<a href="">风险准备金</a>
+					</li>
+					<li class="list-group-item">
+						<a href="">交割记录</a>
+					</li>
+					<li class="list-group-item">
+						<a href="">爆仓订单</a>
+					</li>
+					<li class="list-group-item">
+						<a href="">解释说明</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="right-main">
+			<div class="table-title">
+				<ul class="nav nav-tabs">
+					<li role="presentation" class="active">
+						<a href="#">当周 BTC<span>1020</span></a>
+					</li>
+					<li role="presentation">
+						<a href="#">次周 BTC<span>1027</span></a>
+					</li>
+					<li role="presentation">
+						<a href="#">季度 BTC<span>1229</span></a>
+					</li>
+				</ul>
+			</div>
+			<div class="table-body clearfix">
+				<div class="trade-body">
+					<div class="trade-body-title">
+						<span>距离交割还有:</span><span>4天</span>
+						<a class="fr">
+							<span class="fa fa-calculator"></span>
+							<span>计算器</span>
+						</a>
+					</div>
+					<div class="available">
+						<span>可用保证金฿</span>
+						<b>0.0000</b>
+						<span>, 可开 ฿</span>
+						<a href=""><b>0.0000</b></a>
+					</div>
+					<div class="qty form-horizontal col-sm-9">
+						<div class="form-group">
+							<label for="orderTypes" class="col-sm-3 control-label">委托类型:</label>
+							<div class="col-sm-9">
+								<select class="form-control" id="orderTypes">
+									<option value="1">限价单</option>
+									<option value="2">计划委托</option>
+									<option value="3">跟踪委托</option>
+									<option value="4">冰山委托</option>
+									<option value="5">时间加权委托</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="price" class="col-sm-3 control-label">价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格:</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="price" placeholder="USD">
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="number" class="col-sm-3 control-label">数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;量:</label>
+							<div class="col-sm-9">
+								<input type="text" class="form-control" id="number" placeholder="BTC">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label"></label>
+							<div class="percent col-sm-9">
+								<a href="javascript:" class="btn btn-default ac">10%</a>
+								<a href="javascript:" class="btn btn-default">20%</a>
+								<a href="javascript:" class="btn btn-default">50%</a>
+								<a href="javascript:" class="btn btn-default">100%</a>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label"></label>
+							<div class="order col-sm-9">
+								<a href="javascript:" class="btn btn-success">买入开多(看涨)</a>
+								<a href="javascript:" class="btn btn-danger fr">卖出开空(看跌)</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="list-body">
+					<div class="trade-body-title">
+						<span>持仓量 ฿</span><span>6540</span>
+						<a class="fr">
+							<span>24小时成交量 ฿</span><span>32165</span>
+						</a>
+					</div>
+					<div class="trade-title clearfix">
+						<div>
+							<span>方向</span>
+						</div>
+						<div class="text-center">
+							<span>价格(</span><a class="link">USD</a><span>)</span>
+						</div>
+						<div class="text-right">
+							<span>价格(</span><a class="link">USD</a><span>)</span>
+						</div>
+					</div>
+					<div></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<% include footer.ejs %>
+</body>
+</html>
