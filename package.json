@@ -1,20 +1,30 @@
 {
-  "name": "uicon",
+  "name": "peatio.js",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Changdao/peatio.js.git"
   },
   "keywords": [
-    "uicon"
+    "peatio.js"
   ],
-  "author": "",
+  "author": "tonliyp",
+  "license": "MIT",
+  "homepage": "https://github.com/Changdao/peatio.js#readme",
   "dependencies": {
     "ejs": "~2.3.1",
     "express": "~4.12.2",
-    "bootstrap": "^3.3.7",
-    "jquery": "^2.2.4",
-    "vue": "2.1.8"
+    "serve-favicon": "2.4.5",
+    "body-parser": "^1.18.2",
+    "bluebird": "^3.5.0",
+    "sequelize": "^4.11.0",
+    "pg": "^7.3.0",
+    "redis": "^2.8.0"
   }
 }

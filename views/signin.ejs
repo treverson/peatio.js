@@ -1,0 +1,138 @@
+<html lang="en">
+<head>
+	<link href="/css/global.css?body=1" media="all" rel="stylesheet">
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/bootstrap-switch.min.js"></script>
+	<title>Peatio - The Opensource Cryptocurrency Exchange</title>
+	<meta content="Peatio - The Opensource Cryptocurrency Exchange" name="description">
+	<meta content="Peatio,Opensource,Exchange,Cryptocurrency" name="keywords">
+	<meta content="authenticity_token" name="csrf-param">
+	<meta content="pBsfEX2FBba71+8FOx9XgdBaJI4txbQQBDiEpY2mMzI=" name="csrf-token">
+</head>
+<body data-lang="zh-cn" id="sessions-new">
+	<div class="alert alert-danger alert-dismissable pusher-unavailable hide" role="alert">
+		<div class="container">
+			<button class="close" data-dismiss="alert" type="button">
+				<span aria-hidden="true">×</span>
+				<span class="sr-only">Close</span>
+			</button>
+			<span class="text-important">与服务器通讯异常，<a href="#" class="alert-link">请刷新页面重试</a>。</span>
+		</div>
+	</div>
+	<div id="wrap">
+		<header class="navbar navbar-default navbar-static-top" role="navigation">
+			<div class="container">
+				<ul class="nav navbar-nav navbar-left" id="menu">
+					<a class="text-center navbar-brand" href="/">PEATIO</a>
+					<li>
+						<a href="/markets/btccny">
+							<i class="fa fa-exchange"></i><span>交易大厅</span>
+						</a>
+					</li>
+					<li>
+						<a href="/exchange_assets">
+							<i class="fa fa-bar-chart-o"></i><span>资产公开</span>
+						</a>
+					</li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li class="active">
+						<a href="/signin" target="">
+						<i class="fa fa-"></i><span>登录</span>
+						</a>
+					</li>
+					<li>
+						<a href="/signup" target="">
+							<i class="fa fa-"></i><span>创建账户</span>
+						</a>
+					</li>
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+							<img src="/images/languages/zh-CN.png">
+							<b class="caret"></b>
+						</a>
+						<ul class="dropdown-menu" id="languages">
+							<li>
+								<a href="?lang=en">
+									<img src="/images/languages/en.png">
+								</a>
+							</li>
+							<li>
+								<a href="?lang=zh-CN">
+									<img src="/images/languages/zh-CN.png">
+								</a>
+							</li>
+							<li>
+								<a href="?lang=ko">
+									<img src="/images/languages/ko.png">
+								</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</header>
+		<div class="container">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h2 class="panel-title">登录</h2>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-xs-8" id="guide">
+							<h3>登录我的账户</h3>
+							<p class="text-ignore">现在登录，以便您开始交易，随时关注交易动态。</p>
+							<ul class="list-unstyled">
+								<li>
+									<a href="/reset_passwords/new">忘记密码</a>
+								</li>
+								<li>
+									<a href="/signup">创建账户</a>
+								</li>
+							</ul>
+						</div>
+						<div class="col-xs-16" id="content">
+							<div class="flash-message"></div>
+							<form accept-charset="UTF-8" action="/auth/identity/callback" class="simple_form form-horizontal" id="new_identity" method="post" novalidate="novalidate">
+								<div style="margin:0;padding:0;display:inline">
+									<input name="utf8" type="hidden" value="✓">
+									<input name="authenticity_token" type="hidden" value="pBsfEX2FBba71+8FOx9XgdBaJI4txbQQBDiEpY2mMzI=">
+								</div>
+								<div class="form-group email required identity_email">
+									<div class="col-xs-8 text-right">
+										<label class="email required control-label" for="identity_email">
+										<abbr title="必须的">*</abbr> 登录邮箱</label>
+									</div>
+									<div class="col-xs-14">
+										<input autofocus="autofocus" class="string email required form-control" id="identity_email" name="auth_key" placeholder="邮箱地址" type="email">
+									</div>
+								</div>
+								<div class="form-group password required identity_password field_with_hint">
+									<div class="col-xs-8 text-right">
+										<label class="password required control-label" for="identity_password">
+										<abbr title="必须的">*</abbr> 登录密码</label>
+									</div>
+									<div class="col-xs-14">
+										<input class="password required form-control" id="identity_password" name="password" placeholder="密码" type="password">
+									</div>
+									<span class="hint col-xs-14 col-xs-offset-8">请输入至少6位密码, 建议包含大写、小写字母与数字。</span>
+								</div>
+								<hr class="split">
+								<div class="form-group">
+									<div class="form-submit col-xs-22">
+										<input cancel="/" class="btn btn-default btn-lg pull-right btn" data-loading-text="Creating..." name="commit" type="submit" value="登录">
+										<a class="btn btn-info btn-lg pull-right" href="/">取消</a>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="push"></div>
+	</div>
+	<% include footer.ejs %>
+</body>
+</html>
