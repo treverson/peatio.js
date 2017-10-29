@@ -1,0 +1,170 @@
+<html lang="en">
+<head>
+	<link href="/css/global.css?body=1" media="all" rel="stylesheet">
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/bootstrap-switch.min.js"></script>
+	<title>Peatio - The Opensource Cryptocurrency Exchange</title>
+	<meta content="Peatio - The Opensource Cryptocurrency Exchange" name="description">
+	<meta content="Peatio,Opensource,Exchange,Cryptocurrency" name="keywords">
+	<meta content="authenticity_token" name="csrf-param">
+	<meta content="Vwr51jnJB/KZjZqPm616r8JCx/2QXE6LOckEm+unCf0=" name="csrf-token">
+</head>
+<body data-lang="zh-cn" id="assets-index" style="">
+	<div class="alert alert-danger alert-dismissable pusher-unavailable hide" role="alert">
+		<div class="container">
+			<button class="close" data-dismiss="alert" type="button">
+				<span aria-hidden="true">×</span>
+				<span class="sr-only">Close</span>
+			</button>
+			<span class="text-important">与服务器通讯异常，<a href="#" class="alert-link">请刷新页面重试</a>。</span>
+		</div>
+	</div>
+	<div id="wrap">
+		<header class="navbar navbar-default navbar-static-top" role="navigation">
+			<div class="container">
+				<ul class="nav navbar-nav navbar-left" id="menu">
+					<a class="text-center navbar-brand" href="/">PEATIO</a>
+					<li>
+						<a href="/markets/btccny">
+							<i class="fa fa-exchange"></i><span>交易大厅</span>
+						</a>
+					</li>
+					<li class="active">
+						<a href="/exchange">
+							<i class="fa fa-bar-chart-o"></i><span>资产公开</span>
+						</a>
+					</li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li>
+						<a href="/signin" target="">
+						<i class="fa fa-"></i><span>登录</span>
+						</a>
+					</li>
+					<li>
+						<a href="/signup" target="">
+							<i class="fa fa-"></i><span>创建账户</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</header>
+		<div class="container">
+			<ul class="nav nav-justified assets-nav">
+				<li class="" data-scroll-nav="0">
+					<a>资产证明</a>
+				</li>
+				<li class="active" data-scroll-nav="1">
+					<a>BTC资产清单</a>
+				</li>
+				<li class="" data-scroll-nav="2">
+					<a>CNY资产清单</a>
+				</li>
+			</ul>
+			<div data-scroll-index="1">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-xs-8" id="guide">
+								<h3>BTC资产清单</h3>
+								<p class="text-ignore">查看交易所全部BTC资产清单</p>
+							</div>
+							<div class="col-xs-16" id="content">
+								<div class="jumbotron">
+									<div class="row">
+										<div class="col-xs-offset-4 col-xs-16">
+											<span class="pull-left">BTC总资产</span>
+											<span class="pull-right">
+												<span class="translation_missing" title="translation missing: zh-CN.currency.icon.btc">Btc</span>0</span>
+										</div>
+									</div>
+									<div class="clearfix"/>
+									<div class="row">
+										<table class="table">
+											<thead>
+												<tr>
+													<td>钱包地址</td>
+													<td>
+														<span class="translation_missing" title="translation missing: zh-CN.private.assets.btc_assets.balance">Balance</span>
+													</td>
+												</tr>
+											</thead>
+											<tbody></tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div data-scroll-index="2">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-xs-8" id="guide">
+								<h3>CNY资产清单</h3>
+								<p class="text-ignore">查看交易所全部CNY资产清单</p>
+							</div>
+							<div class="col-xs-16" id="content">
+								<div class="jumbotron">
+									<div class="row">
+										<div class="col-xs-offset-4 col-xs-16">
+											<span class="pull-left">CNY总资产</span>
+											<span class="pull-right">
+												<span class="translation_missing" title="translation missing: zh-CN.currency.icon.cny">Cny</span>
+											</span>
+										</div>
+									</div>
+									<div class="clearfix"></div>
+								</div>
+								<p>每位登录貔貅的用户可通过查询貔貅唯一开户银行余额监督我们的服务。</p>
+								<p>开户银行： 招商银行</p>
+								<p>开户帐号： 6225 0885 6022 3501</p>
+								<p>查询密码： 111111</p>
+								<p>查询电话： 95555</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="push"></div>
+	</div>
+	<footer>
+		<div class="container">
+			<div class="row text-center">
+				<p>Maintained by the <a href="https://github.com/orgs/peatio/people" target="_blank">core team</a>with the help of
+					<a href="https://github.com/peatio/peatio/graphs/contributors" target="_blank">our contributors</a>
+					.</p>
+				<p>Code licensed under <a href="http://peatio.mit-license.org/" target="_blank">MIT</a>, documentation under
+					<a href="http://creativecommons.org/licenses/by/3.0/" target="_blank">CC BY 3.0</a>
+					.</p>
+				<p></p>
+				<ul class="list-inline">
+					<li>
+						<span>Currently v0.2.1</span>
+					</li>
+					<li>
+						<a href="https://github.com/peatio/peatio" target="_blank">GitHub</a>
+					</li>
+					<li>
+						<a href="https://github.com/peatio/peatio/tree/master/doc" target="_blank">Documents</a>
+					</li>
+					<li>
+						<a href="https://github.com/peatio/peatio/wiki/About" target="_blank">About</a>
+					</li>
+					<li>
+						<a href="https://github.com/peatio/peatio/issues?state=open" target="_blank">Issues</a>
+					</li>
+					<li>
+						<a href="https://github.com/peatio/peatio/releases" target="_blank">Releases</a>
+					</li>
+				</ul>
+				<p></p>
+			</div>
+		</div>
+	</footer>
+</body>
+</html>

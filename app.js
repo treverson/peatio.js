@@ -8,6 +8,7 @@ const bodyParser = require("body-parser");
 const index = require('./routes/controller/index');
 const setting = require('./routes/controller/setting');
 const signin = require('./routes/controller/signin');
+const signup = require('./routes/controller/signup');
 
 const app = express();
 
@@ -24,7 +25,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, '/assets')));
 
 app.use('/signin', signin);
+app.use('/signup', signup);
 app.use('/setting', setting);
+app.use('/exchange', function(req, res, next) {
+  res.render('exchange', {name: '该违规为各位'});
+});
 app.use('/', index);
 
 // app.use('/users', users);

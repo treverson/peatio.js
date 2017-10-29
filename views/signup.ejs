@@ -37,12 +37,12 @@
 					</li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li class="active">
+					<li>
 						<a href="/signin" target="">
 						<i class="fa fa-"></i><span>登录</span>
 						</a>
 					</li>
-					<li>
+					<li class="active">
 						<a href="/signup" target="">
 							<i class="fa fa-"></i><span>创建账户</span>
 						</a>
@@ -53,52 +53,55 @@
 		<div class="container">
 			<div class="panel panel-default">
 				<div class="panel-heading">
-					<h2 class="panel-title">登录</h2>
+					<h2 class="panel-title">创建账户</h2>
 				</div>
 				<div class="panel-body">
 					<div class="row">
 						<div class="col-xs-8" id="guide">
-							<h3>登录我的账户</h3>
-							<p class="text-ignore">现在登录，以便您开始交易，随时关注交易动态。</p>
+							<h3>创建我的账户</h3>
+							<p class="text-ignore">这将是您的各项服务所需要的用户名，例如交易购买、转账、提币、提现等，为了您的账户安全，尽量避免不安全的因素，请您填写完整。</p>
 							<ul class="list-unstyled">
 								<li>
-									<a href="/reset_passwords/new">忘记密码</a>
-								</li>
-								<li>
-									<a href="/signup">创建账户</a>
+									<a href="/signin">立即登录</a>
 								</li>
 							</ul>
 						</div>
 						<div class="col-xs-16" id="content">
 							<div class="flash-message"></div>
-							<form accept-charset="UTF-8" action="/auth/identity/callback" class="simple_form form-horizontal" id="new_identity" method="post" novalidate="novalidate">
+							<form accept-charset="UTF-8" action="/auth/identity/register" class="simple_form form-horizontal" id="new_identity" method="post" novalidate="novalidate">
 								<div style="margin:0;padding:0;display:inline">
 									<input name="utf8" type="hidden" value="✓">
-									<input name="authenticity_token" type="hidden" value="pBsfEX2FBba71+8FOx9XgdBaJI4txbQQBDiEpY2mMzI=">
+									<input name="authenticity_token" type="hidden" value="1o4mK90mMLnzpL5wmpZ9HEk6UYb+tzVIr1icdJgDFwY=">
 								</div>
 								<div class="form-group email required identity_email">
 									<div class="col-xs-8 text-right">
-										<label class="email required control-label" for="identity_email">
-										<abbr title="必须的">*</abbr> 登录邮箱</label>
+										<label class="email required control-label" for="identity_email"><abbr title="必须的">*</abbr> 登录邮箱</label>
 									</div>
 									<div class="col-xs-14">
-										<input autofocus="autofocus" class="string email required form-control" id="identity_email" name="auth_key" placeholder="邮箱地址" type="email">
+										<input autofocus="autofocus" class="string email required form-control" id="identity_email" name="email" placeholder="例如：xiaobai@example.com" type="email">
 									</div>
 								</div>
 								<div class="form-group password required identity_password field_with_hint">
 									<div class="col-xs-8 text-right">
-										<label class="password required control-label" for="identity_password">
-										<abbr title="必须的">*</abbr> 登录密码</label>
+										<label class="password required control-label" for="identity_password"><abbr title="必须的">*</abbr> 新密码</label>
 									</div>
 									<div class="col-xs-14">
-										<input class="password required form-control" id="identity_password" name="password" placeholder="密码" type="password">
+										<input class="password required form-control" id="identity_password" name="password" placeholder="请设置登录密码" type="password">
 									</div>
 									<span class="hint col-xs-14 col-xs-offset-8">请输入至少6位密码, 建议包含大写、小写字母与数字。</span>
+								</div>
+								<div class="form-group password required identity_password_confirmation">
+									<div class="col-xs-8 text-right">
+										<label class="password required control-label" for="identity_password_confirmation"><abbr title="必须的">*</abbr> 确认密码</label>
+									</div>
+									<div class="col-xs-14">
+										<input class="password required form-control" id="identity_password_confirmation" name="password_confirmation" placeholder="确认密码" type="password">
+									</div>
 								</div>
 								<hr class="split">
 								<div class="form-group">
 									<div class="form-submit col-xs-22">
-										<input cancel="/" class="btn btn-default btn-lg pull-right btn" data-loading-text="Creating..." name="commit" type="submit" value="登录">
+										<input cancel="/" class="btn btn-default btn-lg pull-right btn" data-loading-text="Creating..." name="commit" type="submit" value="创建账户">
 										<a class="btn btn-info btn-lg pull-right" href="/">取消</a>
 									</div>
 								</div>
