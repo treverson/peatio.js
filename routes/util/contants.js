@@ -6,3 +6,7 @@ const KEYS = {
 	user: "users:",
 	controller: "controllers:"
 };
+
+module.exports = {
+	KEYS: KEYS
+}

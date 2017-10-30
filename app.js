@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const favicon = require('serve-favicon');
 const bodyParser = require("body-parser");
+const TABLE_DEFINE = require("./routes/domain/table.define");
 // const ejs = require('ejs');
 
 // const users = require('./routes/users');
@@ -65,7 +66,7 @@ app.use(function(err, req, res, next) {
   });
 });
 
-const port = process.env.PORT || 80;
+const port = process.env.PORT || 1234;
 app.listen(port);
 
 console.log(`listen the port: ${port}`);
