@@ -27,6 +27,7 @@ app.use(express.static(path.join(__dirname, '/assets')));
 
 app.use('/signin', signin);
 app.use('/signup', signup);
+app.use('/auth', auth);
 app.use('/setting', setting);
 app.use('/exchange', function(req, res, next) {
   res.render('exchange', {name: '该违规为各位'});
