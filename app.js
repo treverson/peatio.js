@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const favicon = require('serve-favicon');
 const bodyParser = require("body-parser");
-const TABLE_DEFINE = require("./routes/domain/table.define");
+// const TABLE_DEFINE = require("./routes/domain/table.define");
 // const ejs = require('ejs');
 
 // const users = require('./routes/users');
@@ -10,6 +10,7 @@ const index = require('./routes/controller/index');
 const setting = require('./routes/controller/setting');
 const signin = require('./routes/controller/signin');
 const signup = require('./routes/controller/signup');
+const auth = require('./routes/controller/auth');
 
 const app = express();
 
