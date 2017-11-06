@@ -1,0 +1,17 @@
+development: &defaults
+  adapter: postgres
+  encoding: utf8
+  database: peatio
+  username: postgres
+  password: postgres
+  host: localhost
+  pool: 10
+  reconnect: true
+
+test:
+  <<: *defaults
+  database: peatio
+
+production:
+  <<: *defaults
+  database: peatio_production

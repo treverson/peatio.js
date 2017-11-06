@@ -1,0 +1,164 @@
+<html lang="zh">
+<head>
+	<link href="/css/global.css?body=1" media="all" rel="stylesheet">
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/bootstrap-switch.min.js"></script>
+	<title>Peatio - The Opensource Cryptocurrency Exchange</title>
+	<meta content="Peatio - The Opensource Cryptocurrency Exchange" name="description">
+	<meta content="Peatio,Opensource,Exchange,Cryptocurrency" name="keywords">
+	<meta content="authenticity_token" name="csrf-param">
+	<meta content="pBsfEX2FBba71+8FOx9XgdBaJI4txbQQBDiEpY2mMzI=" name="csrf-token">
+</head>
+<body data-lang="zh-cn" id="settings-index">
+	<div class="alert alert-danger alert-dismissable pusher-unavailable hide" role="alert">
+		<div class="container">
+			<button class="close" data-dismiss="alert" type="button">
+				<span aria-hidden="true">×</span>
+				<span class="sr-only">Close</span>
+			</button>
+			<span class="text-important">与服务器通讯异常，<a href="#" class="alert-link">请刷新页面重试</a>。</span>
+		</div>
+	</div>
+	<div id="wrap">
+		<% include header %>
+		<div class="container">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h2 class="panel-title">用户设置</h2>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-xs-8" id="guide">
+							<h3>
+								<i class="fa fa-user"></i>
+								<span><%= identity.email %></span>
+							</h3>
+							<p class="text-ignore">管理并修改您的个人资料及绑定信息。</p>
+							<ul class="list-group">
+								<% if(isAdmin){ %>
+								<span class="label label-warning">ADMIN</span>
+								<%}%>
+							</ul>
+							<p class="text-warning">您应启用全部 <b>安全设置</b>
+								<i class="fa fa-bolt"></i>，以保障帐户及资金安全。
+							</p>
+						</div>
+						<div class="col-xs-16" id="content">
+							<div class="flash-message">
+								<div class="alert alert-dismissable alert-info">
+									<button aria-hidden="true" class="close" data-dismiss="alert" type="button">×</button>
+									<p>
+										<i class="fa fa-info-circle"></i>
+										<span>邮件已经发送至您的邮箱，请您尽快进入您的邮箱进行验证，如未收到请点击再次发送。</span>
+									</p>
+								</div>
+							</div>
+							<table class="table" id="setting_list">
+								<tbody>
+									<tr>
+										<td class="col-xs-2 text-center vertical-center">
+											<i class="fa fa-envelope-o fa-2x"></i>
+										</td>
+										<td class="col-xs-15">
+											<h4>邮箱验证</h4>
+											<p class="text-ignore">您的邮箱还未经过验证，点击“发送邮件”按钮，完成验证。</p>
+										</td>
+										<td class="col-xs-7 vertical-center">
+											<a class="btn btn-default btn-block" href="/activations/new">再次发送</a>
+										</td>
+									</tr>
+									<tr>
+										<td class="col-xs-2 text-center vertical-center">
+											<i class="fa fa-thumbs-o-up fa-2x"></i>
+										</td>
+										<td class="col-xs-15">
+											<h4>
+												<span>实名认证</span>
+												<i class="fa fa-bolt text-warning"></i>
+											</h4>
+											<p class="text-ignore">为配合国家相关法令条例，请您正确输入信息，进行身份认证，身份认证未完成将不能在网站进行任何操作。</p>
+										</td>
+										<td class="col-xs-7 vertical-center">
+											<a class="btn btn-default btn-block" href="/id_document/edit">设置</a>
+										</td>
+									</tr>
+									<tr>
+										<td class="col-xs-2 text-center vertical-center">
+											<i class="fa fa-mobile fa-4x"></i>
+										</td>
+										<td class="col-xs-15">
+											<h4>
+												<span>手机绑定</span>
+												<i class="fa fa-bolt text-warning"></i>
+											</h4>
+											<p class="text-ignore">绑定手机号码，让您的资金更安全，您可以即时收到在网站操作的动态提醒并及时监控账号安全。</p>
+										</td>
+										<td class="col-xs-7 vertical-center">
+											<a class="btn btn-default btn-block" href="/verify/sms_auth">设置</a>
+										</td>
+									</tr>
+									<tr>
+										<td class="col-xs-2 text-center vertical-center">
+											<i class="fa fa-superscript fa-2x"></i>
+										</td>
+										<td class="col-xs-15">
+											<h4>
+												<span>两步验证</span>
+												<i class="fa fa-bolt text-warning"></i>
+											</h4>
+											<p class="text-ignore">两步验证为您的帐户额外添加了一层保护。</p>
+										</td>
+										<td class="col-xs-7 vertical-center">
+											<a class="btn btn-default btn-block" href="/verify/google_auth">设置</a>
+										</td>
+									</tr>
+									<tr>
+										<td class="col-xs-2 text-center vertical-center">
+											<i class="fa fa-key fa-2x"></i>
+										</td>
+										<td class="col-xs-15">
+											<h4>登录密码</h4>
+											<p class="text-ignore">此密码仅限作网站登录使用，请您牢记。</p>
+										</td>
+										<td class="col-xs-7 vertical-center">
+											<a class="btn btn-default btn-block" href="/identity/edit">修改</a>
+										</td>
+									</tr>
+									<tr>
+										<td class="col-xs-2 text-center vertical-center">
+											<i class="fa fa-code fa-2x"></i>
+										</td>
+										<td class="col-xs-15">
+											<h4>API密钥</h4>
+											<p class="text-ignore">申请和管理您的API密钥</p>
+										</td>
+										<td class="col-xs-7 vertical-center">
+											<a class="btn btn-default btn-block" href="/api_tokens">设置</a>
+										</td>
+									</tr>
+									<tr>
+										<td class="col-xs-2 text-center vertical-center">
+											<i class="fa fa-weibo fa-2x"></i>
+										</td>
+										<td class="col-xs-15">
+											<h4>绑定微博</h4>
+											<p class="text-ignore">绑定微博后您可以通过微博进行登录, 而无需每次都输入账号密码.</p>
+										</td>
+										<td class="col-xs-7 vertical-center">
+											<a class="btn btn-default btn-block" href="/auth/weibo">绑定</a>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="push">
+		</div>
+	</div>
+	<% include footer.ejs %>
+</body>
+</html>
