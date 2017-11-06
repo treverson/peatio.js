@@ -7,7 +7,7 @@
 6 silly lifecycle peatio.js@1.0.0~prestart: no script for prestart, continuing
 7 info lifecycle peatio.js@1.0.0~start: peatio.js@1.0.0
 8 verbose lifecycle peatio.js@1.0.0~start: unsafe-perm in lifecycle true
-9 verbose lifecycle peatio.js@1.0.0~start: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/liyp/Work/peatio.js/node_modules/.bin:/usr/local/opt/mysql@5.5/bin:/Users/liyp/.rbenv/shims:/Users/liyp/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/liyp/.rvm/bin
+9 verbose lifecycle peatio.js@1.0.0~start: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/liyp/Work/peatio.js/node_modules/.bin:/usr/local/bin/psql:/usr/local/opt/mysql@5.5/bin:/Users/liyp/.rbenv/shims:/Users/liyp/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/liyp/.rvm/bin
 10 verbose lifecycle peatio.js@1.0.0~start: CWD: /Users/liyp/Work/peatio.js
 11 silly lifecycle peatio.js@1.0.0~start: Args: [ '-c', 'node app.js' ]
 12 silly lifecycle peatio.js@1.0.0~start: Returned: code: 1  signal: null

@@ -2,7 +2,12 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/', function(req, res, next) {
-  res.render('setting', {name: '该违规为各位'});
+	if(!req.session.identity){
+		res.redirect('/signin');
+		return;
+	}
+	//two_factors
+	res.render('setting');
 });
 
 module.exports = router;

@@ -1,43 +1,69 @@
-<header class="header navbar navbar-inverse">
+<header class="navbar navbar-default navbar-static-top" role="navigation">
 	<div class="container">
-		<div class="collapse navbar-collapse">
-			<div class="navbar-nav" id="market_view">
-				<span class="navbar-brand hidden-sm market-title">市场概况
-					<span class="fa fa-sort-desc" style="vertical-align:3px;"></span>
-				</span>
-			</div>
-			<ul class="nav navbar-nav market-banner">
-				<li>
-					<span class="gray">BTC/USD:</span>
-					<i class="red">$</i>
-					<span class="red">5,962.660</span>
-					<span class="red fa fa-arrow-down"></span>
-				</li>
-				<li>
-					<span class="gray">BTC/USD:</span>
-					<i class="red">$</i>
-					<span class="red">5,962.660</span>
-				</li>
-				<li>
-					<span class="gray">BTC/USD:</span>
-					<i class="red">$</i>
-					<span class="red">5,962.660</span>
-				</li>
-				<li>
-					<span class="gray">BTC/USD:</span>
-					<i class="red">$</i>
-					<span class="red">5,962.660</span>
-				</li>
-				<li>
-					<span class="gray">BTC/USD:</span>
-					<i class="red">$</i>
-					<span class="red">5,962.660</span>
-				</li>
-			</ul>
-			<div class="nav navbar-nav navbar-right personal-title">
-				<a href="/signin">登录</a>
-				<a class="btn btn-primary btn-sm" href="/signup">注册</a>
-			</div>
-		</div>
+		<ul class="nav navbar-nav navbar-left" id="menu">
+			<a class="text-center navbar-brand" href="/">PEATIO</a>
+			<li>
+				<a href="/markets/btccny" target="true">
+					<i class="fa fa-exchange"></i><span>交易大厅</span>
+				</a>
+			</li>
+			<% if(identity != null){ %>
+			<li <% if(location == 'funds'){ %>class="active" <% } %>>
+				<a href="/funds" target="">
+					<i class="fa fa-money"></i><span>我的资产</span>
+				</a>
+			</li>
+			<% }%>
+			<li <% if(location == 'exchange_assets'){ %>class="active" <% } %>>
+				<a href="/exchange_assets" target="">
+					<i class="fa fa-bar-chart-o"></i><span>资产公开</span>
+				</a>
+			</li>
+			<% if(identity != null){ %>
+			<li <% if(location == 'history/orders'){ %>class="active" <% } %>>
+				<a href="/history/orders" target="">
+					<i class="fa fa-book"></i><span>历史记录</span>
+				</a>
+			</li>
+			<% }%>
+		</ul>
+		<ul class="nav navbar-nav navbar-right">
+			<% if(identity != null){ %>
+			<li class="dropdown account-settings active">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+					<span><%= identity.email %></span>
+					<b class="caret"></b>
+				</a>
+				<ul class="dropdown-menu">
+					<li>
+						<a href="/settings">
+							<i class="fa fa-user"></i><span>用户设置</span>
+						</a>
+					</li>
+					<li>
+						<a href="/tickets">
+							<i class="fa fa-comments"></i><span>服务单</span>&nbsp;<span class="badge">0</span>
+						</a>
+					</li>
+					<li>
+						<a href="/signin/out">
+							<i class="fa fa-sign-out"></i><span>安全退出</span>
+						</a>
+					</li>
+				</ul>
+			</li>
+			<% } else {%>
+			<li <% if(location == 'signin'){ %>class="active" <% } %>>
+				<a href="/signin" target="">
+					<i class="fa fa-"></i><span>登录</span>
+				</a>
+			</li>
+			<li <% if(location == 'signup'){ %>class="active" <% } %>>
+				<a href="/signup" target="">
+					<i class="fa fa-"></i><span>创建账户</span>
+				</a>
+			</li>
+			<% } %>
+		</ul>
 	</div>
 </header>

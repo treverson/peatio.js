@@ -1,16 +1,16 @@
 var Sequelize = require('sequelize');
 const KEYS = require("../util/contants").KEYS;
+const data = require('../util/configs').database;
 
-const APP = "peatio";
-var sequelize = new Sequelize(APP, 'postgres', 'lyp75648895', {
-	host: "localhost",
+var sequelize = new Sequelize(data.database, data.username, data.password, {
+	host: data.host,
 	logging: true,
 	define: {
 		freezeTableName: true,
 		underscored: true
 
 	},
-	dialect: 'postgres'
+	dialect: data.adapter
 });
 
 var bluebird = require('bluebird');
@@ -29,16 +29,15 @@ require('pg').types.setTypeParser(1114, stringValue => {
 初始化数据
 **/
 
-redis.hmset(`${KEYS.client}${APP}`, {
-	clientId: APP,
+redis.hmset(`${KEYS.client}${data.database}`, {
+	clientId: data.database,
 	clientSecret: 'e6197205ba6f9c6'
 });
-const CONFIG = {
+// const CONFIG = {
 
-};
-
+// };
 
 exports.sequelize = sequelize;
 exports.Sequelize = Sequelize;
 exports.redis = redis;
-exports.CONFIG = CONFIG;
+// exports.CONFIG = CONFIG;

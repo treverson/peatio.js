@@ -1,4 +1,4 @@
-<html lang="en">
+<html lang="zh">
 <head>
 	<link href="/css/global.css?body=1" media="all" rel="stylesheet">
 	<script src="/js/jquery.min.js"></script>
@@ -21,35 +21,7 @@
 		</div>
 	</div>
 	<div id="wrap">
-		<header class="navbar navbar-default navbar-static-top" role="navigation">
-			<div class="container">
-				<ul class="nav navbar-nav navbar-left" id="menu">
-					<a class="text-center navbar-brand" href="/">PEATIO</a>
-					<li>
-						<a href="/markets/btccny">
-							<i class="fa fa-exchange"></i><span>交易大厅</span>
-						</a>
-					</li>
-					<li>
-						<a href="/exchange">
-							<i class="fa fa-bar-chart-o"></i><span>资产公开</span>
-						</a>
-					</li>
-				</ul>
-				<ul class="nav navbar-nav navbar-right">
-					<li class="active">
-						<a href="/signin" target="">
-						<i class="fa fa-"></i><span>登录</span>
-						</a>
-					</li>
-					<li>
-						<a href="/signup" target="">
-							<i class="fa fa-"></i><span>创建账户</span>
-						</a>
-					</li>
-				</ul>
-			</div>
-		</header>
+		<% include header %>
 		<div class="container">
 			<div class="panel panel-default">
 				<div class="panel-heading">
@@ -70,8 +42,20 @@
 							</ul>
 						</div>
 						<div class="col-xs-16" id="content">
-							<div class="flash-message"></div>
-							<form accept-charset="UTF-8" action="/auth/identity/callback" class="simple_form form-horizontal" id="new_identity" method="post" novalidate="novalidate">
+							<div class="flash-message <% if(typeof(error) !== 'undefined'){ %><%=error%><%}%>">
+								<% if(typeof(error) !== 'undefined' && error == 'notUser'){ %>
+								<div class="alert alert-dismissable alert-danger">
+									<button aria-hidden="true" class="close" data-dismiss="alert" type="button">×</button>
+									<p><i class="fa fa-info-circle"></i><span>用户名不存在，请重新输入</span></p>
+								</div>
+								<% } else if(typeof(error) !== 'undefined' && error == 'pwdWrong'){ %>
+								<div class="alert alert-dismissable alert-danger">
+									<button aria-hidden="true" class="close" data-dismiss="alert" type="button">×</button>
+									<p><i class="fa fa-info-circle"></i><span>您输入的密码不正确，请重新输入</span></p>
+								</div>
+								<% } %>
+							</div>
+							<form accept-charset="UTF-8" action="/signin" class="simple_form form-horizontal" id="new_identity" method="post" novalidate="novalidate">
 								<div style="margin:0;padding:0;display:inline">
 									<input name="utf8" type="hidden" value="✓">
 									<input name="authenticity_token" type="hidden" value="pBsfEX2FBba71+8FOx9XgdBaJI4txbQQBDiEpY2mMzI=">
@@ -82,7 +66,7 @@
 										<abbr title="必须的">*</abbr> 登录邮箱</label>
 									</div>
 									<div class="col-xs-14">
-										<input autofocus="autofocus" class="string email required form-control" id="identity_email" name="auth_key" placeholder="邮箱地址" type="email">
+										<input autofocus="autofocus" class="string email required form-control" id="identity_email" name="auth_key" placeholder="邮箱地址" type="email" value="<% if(typeof(auth_key) !== 'undefined'){%><%=auth_key%><%}%>">
 									</div>
 								</div>
 								<div class="form-group password required identity_password field_with_hint">

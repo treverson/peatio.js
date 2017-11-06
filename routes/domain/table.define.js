@@ -387,6 +387,7 @@ const SignupHistories = model.SignupHistories = sequelize.define("signup_histori
 	ua: {type: Sequelize.STRING},
 	createdAt: {type: Sequelize.DATE, field: "created_at"}
 }, {
+	updatedAt: false,
 	indexes: [
 		{fields: ["member_id"], name: "index_signup_histories_on_member_id", method: "BTREE" }
 	]
@@ -517,7 +518,7 @@ sequelize.sync({ force: true }).then(() => {
 			let adminIdentity = {};
 			return Identities.create({
 				email: 'admin@uwifi.com',
-				passwordDigest: 'admin2017',
+				passwordDigest: Util.digest('admin2017'),
 				isActive: true
 			}).then((admin) => {
 				adminIdentity = admin.toJSON();
@@ -544,7 +545,7 @@ sequelize.sync({ force: true }).then(() => {
 		console.log('==================================PARAMETER=====================================');
 		console.log(ar);
 		let adminkey = `${KEYS.user}${account.email}`;
-		console.log(adminkey);
+		console.log(new Date());
 		console.log('==================================   END   =====================================');
 		return redis.hmsetAsync(adminkey, ar);
 	}).catch((error) => {

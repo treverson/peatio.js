@@ -27,6 +27,15 @@
 				<section>
 					<h3>貔貅，将致力于成为世界级的交易软件。</h3>
 				</section>
+				<% if(identity && identity != null){ %>
+				<div class="row" id="getstart">
+					<div class="col-xs-6 col-xs-offset-9 text-center">
+						<a class="btn btn-primary btn-lg btn-block" href="/markets/btccny" role="button">前往交易大厅</a>
+						<a class="btn btn-primary btn-lg btn-block" href="/funds" role="button">我的资产</a>
+						<a class="btn btn-primary btn-lg btn-block" href="/setting" role="button">账户</a>
+					</div>
+				</div>
+				<% }else{ %>
 				<div class="row" id="getstart">
 					<div class="col-xs-4 col-xs-offset-6">
 						<a class="btn btn-primary btn-lg btn-block" href="/signin" role="button">登录</a>
@@ -37,6 +46,7 @@
 						<a class="btn btn-primary btn-lg btn-block" href="/signup" role="button">创建账户</a>
 					</div>
 				</div>
+				<% } %>
 			</div>
 		</header>
 		<div id="push">
