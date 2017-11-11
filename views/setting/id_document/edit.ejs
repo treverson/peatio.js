@@ -1,0 +1,177 @@
+<html lang="zh">
+<head>
+	<link href="/css/global.css?body=1" media="all" rel="stylesheet">
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/bootstrap-switch.min.js"></script>
+	<title>Peatio - The Opensource Cryptocurrency Exchange</title>
+	<meta content="Peatio - The Opensource Cryptocurrency Exchange" name="description">
+	<meta content="Peatio,Opensource,Exchange,Cryptocurrency" name="keywords">
+	<meta content="authenticity_token" name="csrf-param">
+	<meta content="pBsfEX2FBba71+8FOx9XgdBaJI4txbQQBDiEpY2mMzI=" name="csrf-token">
+</head>
+<body data-lang="zh-cn" id="settings-index">
+	<div class="alert alert-danger alert-dismissable pusher-unavailable hide" role="alert">
+		<div class="container">
+			<button class="close" data-dismiss="alert" type="button">
+				<span aria-hidden="true">×</span>
+				<span class="sr-only">Close</span>
+			</button>
+			<span class="text-important">与服务器通讯异常，<a href="#" class="alert-link">请刷新页面重试</a>。</span>
+		</div>
+	</div>
+	<div id="wrap">
+		<% include header %>
+		<div class="container">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h2 class="panel-title">实名认证</h2>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-xs-8" id="guide">
+							<h3>实名认证</h3>
+							<p class="text-ignore"></p>
+							<p class="text-warning">
+								<span class="translation_missing">Warning</span>
+							</p>
+						</div>
+						<div class="col-xs-16" id="content">
+							<div class="flash-message"></div>
+							<div class="state clearfix">
+								<div class="col-xs-8 text-right">
+									<h2>验证状态</h2>
+								</div>
+								<div class="col-xs-14">
+									<h2>未验证</h2>
+								</div>
+							</div>
+							<hr class="split">
+							<form accept-charset="UTF-8" action="/id_document" class="simple_form form-horizontal" enctype="multipart/form-data" id="edit_id_document_1" method="post" novalidate="novalidate">
+								<div style="margin:0;padding:0;display:inline">
+									<input name="utf8" type="hidden" value="✓">
+									<input name="_method" type="hidden" value="patch">
+									<input name="authenticity_token" type="hidden" value="QDxmvwbqKGj2B2RerJP2Xyc0KPNEcYjBalosDKUrnGw=">
+								</div>
+								<div class="form-group string required id_document_name field_with_hint">
+									<div class="col-xs-8 text-right">
+										<label class="string required control-label" for="id_document_name"><abbr title="必须的">*</abbr> 真实姓名</label>
+									</div>
+									<div class="col-xs-14">
+										<input class="string required form-control" id="id_document_name" name="id_document[name]" type="text">
+									</div>
+									<span class="hint col-xs-14 col-xs-offset-8">请填写与您证件上一致的姓名。</span>
+								</div>
+								<div class="form-group date optional id_document_birth_date">
+									<div class="col-xs-8 text-right">
+										<label class="date optional control-label" for="id_document_birth_date_3i">生日</label>
+									</div>
+									<div class="col-xs-14">
+										<select class="date optional form-control" id="id_document_birth_date_3i" name="id_document[birth_date(3i)]">
+										</select>
+										<select class="date optional form-control" id="id_document_birth_date_2i" name="id_document[birth_date(2i)]">
+										</select>
+										<select class="date optional form-control" id="id_document_birth_date_1i" name="id_document[birth_date(1i)]">
+										</select>
+									</div>
+								</div>
+								<div class="form-group text optional id_document_address">
+									<div class="col-xs-8 text-right">
+										<label class="text optional control-label" for="id_document_address">地址</label>
+									</div>
+									<div class="col-xs-14">
+										<textarea class="text optional form-control" id="id_document_address" name="id_document[address]"></textarea>
+									</div>
+								</div>
+								<div class="form-group string optional id_document_city">
+									<div class="col-xs-8 text-right">
+										<label class="string optional control-label" for="id_document_city">城市</label>
+									</div>
+									<div class="col-xs-14">
+										<input class="string optional form-control" id="id_document_city" name="id_document[city]" type="text"></div>
+									</div>
+									<div class="form-group country optional id_document_country">
+										<div class="col-xs-8 text-right">
+											<label class="country optional control-label" for="id_document_country">国家</label>
+										</div>
+										<div class="col-xs-14">
+											<select class="country optional form-control" id="id_document_country" name="id_document[country]">
+											</select>
+										</div>
+									</div>
+									<div class="form-group string optional id_document_zipcode">
+										<div class="col-xs-8 text-right">
+											<label class="string optional control-label" for="id_document_zipcode">邮编</label>
+										</div>
+										<div class="col-xs-14">
+											<input class="string optional form-control" id="id_document_zipcode" name="id_document[zipcode]" type="text">
+										</div>
+									</div>
+									<div class="form-group select required id_document_id_document_type">
+										<div class="col-xs-8 text-right">
+											<label class="select required control-label" for="id_document_id_document_type"><abbr title="必须的">*</abbr> 证件类型</label>
+										</div>
+										<div class="col-xs-14">
+											<select class="select required form-control" id="id_document_id_document_type" name="id_document[id_document_type]">
+												<option value="">请选择</option>
+												<option value="id_card">身份证</option>
+												<option value="passport">护照</option>
+												<option value="driver_license">驾照</option>
+											</select>
+										</div>
+									</div>
+									<div class="form-group string required id_document_id_document_number">
+										<div class="col-xs-8 text-right">
+											<label class="string required control-label" for="id_document_id_document_number"><abbr title="必须的">*</abbr> 证件号码</label>
+									</div>
+										<div class="col-xs-14">
+											<input class="string required form-control" id="id_document_id_document_number" name="id_document[id_document_number]" type="text">
+									</div>
+									</div>
+										<div class="form-group file optional id_document_id_document_file_file">
+											<div class="col-xs-8 text-right">
+											<label class="file optional control-label" for="id_document_id_document_file_attributes_file">证件照片</label>
+									</div>
+										<div class="col-xs-14">
+											<input class="file optional form-control" id="id_document_id_document_file_attributes_file" name="id_document[id_document_file_attributes][file]" type="file">
+									</div>
+									</div>
+										<div class="form-group select required id_document_id_bill_type">
+											<div class="col-xs-8 text-right">
+											<label class="select required control-label" for="id_document_id_bill_type">
+											<abbr title="必须的">*</abbr> 账单类型</label>
+									</div>
+										<div class="col-xs-14">
+											<select class="select required form-control" id="id_document_id_bill_type" name="id_document[id_bill_type]">
+												<option value="">请选择</option>
+												<option value="bank_statement">银行账单</option>
+												<option value="tax_bill">税单</option>
+											</select>
+										</div>
+									</div>
+									<div class="form-group file optional id_document_id_bill_file_file">
+										<div class="col-xs-8 text-right">
+										<label class="file optional control-label" for="id_document_id_bill_file_attributes_file">账单照片</label>
+									</div>
+									<div class="col-xs-14">
+										<input class="file optional form-control" id="id_document_id_bill_file_attributes_file" name="id_document[id_bill_file_attributes][file]" type="file">
+									</div>
+								</div>
+								<hr class="split">
+								<div class="form-group">
+									<div class="form-submit col-xs-22">
+										<input cancel="/settings" class="btn btn-default btn-lg pull-right btn" data-loading-text="Updating..." name="commit" type="submit" value="更新实名认证">
+										<a class="btn btn-info btn-lg pull-right" href="/settings">取消</a>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="push"></div>
+	</div>
+	<% include footer.ejs %>
+</body>
+</html>

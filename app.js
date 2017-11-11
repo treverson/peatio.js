@@ -6,11 +6,7 @@ const favicon = require('serve-favicon');
 const bodyParser = require("body-parser");
 
 const config = require('./routes/util/configs').config;
-const index = require('./routes/controller/index');
-const setting = require('./routes/controller/setting');
-const signin = require('./routes/controller/signin');
-const signup = require('./routes/controller/signup');
-// const auth = require('./routes/controller/auth');
+const routes = require('./routes/controller');
 
 const app = express();
 
@@ -31,28 +27,29 @@ app.use(session({
 }));
 app.use(express.static(path.join(__dirname, '/assets')));
 
+//login filter
 app.use(function(req, res, next){
+  let returnUrls = ['','signin'];
   let url = req.originalUrl;
   url = url.slice(1, url.indexOf('?') >= 0 ? url.indexOf('?') : url.length);
   res.locals.location = url;
   res.locals.identity = req.session.identity;
+  res.locals.member = req.session.member;
   res.locals.isAdmin = false;
   if(!!res.locals.identity && res.locals.identity.email == config.ADMIN){
     res.locals.isAdmin = true;
   }
-  next();
+  if(returnUrls.indexOf(url) >= 0) {
+    next();
+  }else if(!req.session.identity){
+    req.session.login = 'not';
+    res.redirect('/signin');
+  }else {
+    next();
+  }
 });
 
-app.use('/signin', signin);
-app.use('/signup', signup);
-// app.use('/auth', auth);
-app.use('/setting', setting);
-app.use('/exchange', function(req, res, next) {
-  res.render('exchange', {name: '该违规为各位'});
-});
-app.use('/', index);
-
-// app.use('/users', users);
+routes(app);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -62,13 +59,13 @@ app.use(function(req, res, next) {
 });
 
 // error handlers
-
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     console.log(err)
+    console.log('app.js')
     res.render('error', {
       message: err.message,
       error: err

@@ -515,22 +515,72 @@ const Withdraws = model.Withdraws = sequelize.define("withdraws", {
 sequelize.sync({ force: true }).then(() => {
 	Identities.findOne().then((accountInstance) => {
 		if (accountInstance == undefined) {
-			let adminIdentity = {};
+			let signIdentity = {},
+				signMember = {};
 			return Identities.create({
 				email: 'admin@uwifi.com',
 				passwordDigest: Util.digest('admin2017'),
 				isActive: true
-			}).then((admin) => {
-				adminIdentity = admin.toJSON();
-				return Members.findOrCreate({
-					where: {email: adminIdentity.email},
-					defaults: {email: adminIdentity.email}
+			}).then((identity) =>{
+				return sequelize.transaction((t) => {
+					signIdentity = identity;
+					let sn = 'PEA' + Util.randomBase(8) + 'TIO';
+					return Members.findCreateFind({
+						where: {email: identity.email, disabled: false},
+						defaults: {email: identity.email, sn: sn, activated: false},
+						transaction: t
+					}).spread((member) => {
+						signMember = member;
+						return Promise.all([
+							ReadMarks.findCreateFind({
+								where: {readableType: 'Comment', memberId: member.id},
+								defaults: {readableType: 'Comment', memberId: member.id},
+								transaction: t
+							}),
+							ReadMarks.findCreateFind({
+								where: {readableType: 'Ticket', memberId: member.id},
+								defaults: {readableType: 'Ticket', memberId: member.id},
+								transaction: t
+							}),
+							IdDocuments.findCreateFind({
+								where: {memberId: member.id},
+								defaults: {aasm: 'unverified', memberId: member.id},
+								transaction: t
+							}),
+							Accounts.findCreateFind({
+								where: {currency: 1, memberId: member.id},
+								defaults: {balance: 0, currency: 1, locked: 0.0, memberId: member.id},
+								transaction: t
+							}),
+							Accounts.findCreateFind({
+								where: {currency: 2, memberId: member.id},
+								defaults: {balance: 0, currency: 2, locked: 0.0, memberId: member.id},
+								transaction: t
+							})
+						]);
+					});
+				}).then(() => {
+					console.log('transaction============>success');
+					return Members.findOne({where: {id: signMember.id} });
+				}).then((member) => {
+					Authentications.findOrCreate({
+						where: {provider: 'identity', memberId: member.id},
+						defaults: {provider: 'identity', uid: signIdentity.id, memberId: member.id}
+					});
+					return member;
+				}).then((member) => {
+					let expireTime = new Date(Date.now() + 30 * 60 * 1000);
+					return Tokens.findOrCreate({
+						where: {memberId: member.id, expireAt: {$gt: new Date()}, type: 'activation'},
+						defaults: {memberId: member.id, type: 'activation', expireAt: expireTime}
+					});
+				}).catch((err) => {
+					console.log('transaction============>' + err);
+					console.log(err);
 				});
-			}).spread((member, created) => {
-				let authentication = Authentications.build({provider: 'provider', uid: adminIdentity.id});
-				return member.createAuthentication(authentication.toJSON());
 			}).then(() => {
-				return Identities.findById(adminIdentity.id);
+				return Identities.findOne({where: {id: signIdentity.id} });
+			}).catch((err) => {
 			});
 		} else {
 			return accountInstance;
@@ -545,10 +595,11 @@ sequelize.sync({ force: true }).then(() => {
 		console.log('==================================PARAMETER=====================================');
 		console.log(ar);
 		let adminkey = `${KEYS.user}${account.email}`;
-		console.log(new Date());
+		console.log(Date.locale());
 		console.log('==================================   END   =====================================');
 		return redis.hmsetAsync(adminkey, ar);
 	}).catch((error) => {
 		console.log(`init redis error:${error}`);
+		console.log(error)
 	});
 });

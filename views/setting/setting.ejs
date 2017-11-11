@@ -46,6 +46,7 @@
 						</div>
 						<div class="col-xs-16" id="content">
 							<div class="flash-message">
+								<% if(!member.activated){ %>
 								<div class="alert alert-dismissable alert-info">
 									<button aria-hidden="true" class="close" data-dismiss="alert" type="button">×</button>
 									<p>
@@ -53,6 +54,7 @@
 										<span>邮件已经发送至您的邮箱，请您尽快进入您的邮箱进行验证，如未收到请点击再次发送。</span>
 									</p>
 								</div>
+								<%}%>
 							</div>
 							<table class="table" id="setting_list">
 								<tbody>
@@ -65,7 +67,13 @@
 											<p class="text-ignore">您的邮箱还未经过验证，点击“发送邮件”按钮，完成验证。</p>
 										</td>
 										<td class="col-xs-7 vertical-center">
+											<% if(member.activated){ %>
+											<a class="btn btn-success btn-block disabled" href="#" role="button">
+												<i class="fa fa-check-circle"></i><span>已绑定</span>
+											</a>
+											<% }else{ %>
 											<a class="btn btn-default btn-block" href="/activations/new">再次发送</a>
+											<%}%>
 										</td>
 									</tr>
 									<tr>

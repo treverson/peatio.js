@@ -7,6 +7,7 @@ const ReadMark = require('./ReadMark');
 const IdDocument = require('./IdDocument');
 const Account = require('./Account');
 const Authentication = require('./Authentication');
+const Token = require('./Token');
 
 Identities.findByEmail = (email) => {
 	return Promise.all([
@@ -56,22 +57,26 @@ Identities.signup = (param, provider) => {
 					})
 				]);
 			});
-		}).then((result) => {
+		}).then(() => {
 			console.log('transaction============>success');
 			return Member.findOne({where: {id: signMember.id} });
 		}).then((member) => {
-			return Authentication.findOrCreate({
+			Authentication.findOrCreate({
 				where: {provider: provider, memberId: member.id},
 				defaults: {provider: provider, uid: signIdentity.id, memberId: member.id}
+			});
+			return member;
+		}).then((member) => {
+			let expireTime = new Date(Date.now() + 30 * 60 * 1000);
+			return Token.findOrCreate({
+				where: {memberId: member.id, expireAt: {$gt: new Date()}, type: 'activation'},
+				defaults: {memberId: member.id, type: 'activation', expireAt: expireTime}
 			});
 		}).catch((err) => {
 			console.log('transaction============>' + err);
 		});
 	}).then(() => {
-		return Promise.all[
-			Identities.findOne({where: {id: signIdentity.id} }),
-			Member.findOne({where: {id: signMember.id} })
-		]
+		return Identities.findOne({where: {id: signIdentity.id} });
 	}).catch((err) => {
 		console.log('signup============>' + err);
 	});

@@ -10,6 +10,11 @@ router.get('/', function(req, res, next) {
 		res.redirect('/setting');
 		return;
 	}
+	if(!!req.session.login && req.session.login == 'not') {
+		delete req.session.login;
+		res.render('signin', {error: 'notLogin'});
+		return;
+	}
 	res.render('signin');
 });
 
@@ -21,11 +26,14 @@ router.post('/', function(req, res, next) {
 	Identity.findByEmail(email).then((results) => {
 		let identity = results[0],
 			member = results[1];
-		if(identity == undefined){
+		if(identity == undefined) {
 			result = 'notUser';
 			throw new Error(result);
-		}else if(identity.passwordDigest != Util.digest(password)){
+		}else if(identity.passwordDigest != Util.digest(password)) {
 			result = 'pwdWrong';
+			throw new Error(result);
+		}else if(identity.disabled == true) {
+			result = 'disabled';
 			throw new Error(result);
 		}else{
 			SignupHistory.create({
@@ -35,6 +43,7 @@ router.post('/', function(req, res, next) {
 				ua: req.get("User-Agent")
 			});
 			req.session.identity = identity.toJSON();
+			req.session.member = member.toJSON();
 			res.redirect('/setting');
 		}
 	}).catch((error) => {

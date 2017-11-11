@@ -16,7 +16,7 @@ Members.generateSn = () => {
 			return Members.generateSn();
 		}
 	});
-	return 'PEA' + sn + 'TIO';
+	return sn;
 }
 
 Members.beforeCreate = (member, options) => {
@@ -24,5 +24,4 @@ Members.beforeCreate = (member, options) => {
 		member.sn = Members.generateSn();
 	}
 }
-
 module.exports = Members;

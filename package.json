@@ -20,8 +20,10 @@
   "dependencies": {
     "ejs": "~2.3.1",
     "request": "2.82.0",
+    "nodemailer": "^4.1.0",
     "express": "~4.12.2",
     "express-session": "~1.14.2",
+    "amqp": "0.2.6",
     "cookie-parser": "1.4.3",
     "serve-favicon": "2.4.5",
     "body-parser": "^1.18.2",
